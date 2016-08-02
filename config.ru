@@ -9,6 +9,8 @@ end
 # Ensure your app properly handles patch and delete requests
 use Rack::MethodOverride
 
-# Mount application controller (creates an instance of our ApplicationController class that can respond to requests from a clien)
+# Mount application controller (creates an instance of our ApplicationController class that can respond to requests from a client)
 
+use UsersController
+use ProjectsController
 run ApplicationController
