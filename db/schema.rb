@@ -13,16 +13,28 @@
 ActiveRecord::Schema.define(version: 20160801210343) do
 
   create_table "projects", force: :cascade do |t|
-    t.string  "name"
-    t.string  "description"
-    t.string  "date_completed"
-    t.integer "user_id"
+    t.string   "name",                           null: false
+    t.text     "description"
+    t.string   "date_started",                   null: false
+    t.string   "date_completed"
+    t.string   "deadline"
+    t.text     "notes"
+    t.boolean  "status",         default: false, null: false
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["name"], name: "index_projects_on_name"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password_digest"
+    t.string   "first_name",      null: false
+    t.string   "last_name",       null: false
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "username",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["username"], name: "index_users_on_username"
   end
 
 end
