@@ -40,14 +40,27 @@ class UsersController < ApplicationController
     end
   end
 
+  get '/logout' do
+    session.clear if session[:user_id]
+    redirect '/login'
+  end
+
   get '/users/:id' do
     # NOTE: create slug
+    if session[:user_id]
+      @current_user = User.find_by(id: session[:user_id])
+      erb :'users/show'
+    else
+      redirect "/login"
+    end
   end
 
   get '/users/edit' do
+
   end
 
   patch '/users/update' do
+
   end
 
   delete '/users/delete' do
