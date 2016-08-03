@@ -2,14 +2,26 @@
 
 <form action="/projects" method="post">
 
-  <label for="project_name">Name:</label>
-  <input type="text" id="project_name" name="project[name]"><br>
+  <label for="project_name">Name:</label><br>
+  <input type="text" id="project_name" name="project[name]" placeholder=" Project Name"><br><br>
 
-  <label for="project_description">Description:</label>
-  <input type="text" id="project_description" name="project[description]"><br>
+  <label for="project_deadline">Deadline:</label><br>
+  <input type="text" id="project_deadline" name="project[deadline]" placeholder=" Day-Month-Year"><br><br>
 
-  <label for="project_date_completed">Date Completed:</label>
-  <input type="text" id="project_date_completed" name="project[date_completed]"><br>
+<%#   <label for="project_status">Status:</label><br>
+  <input type="text" id="project_status" name="project[status]"><br><br> %>
+
+  <label for="project_description">Description:</label><br>
+  <textarea name="project[description]" id="project_description" rows="2"></textarea><br><br>
+
+  <label for="project_date_started">Started Date:</label><br>
+  <input type="text" id="project_date_started" name="project[date_started]" placeholder=" Day-Month-Year"><br><br>
+
+<%#   <label for="project_date_completed">Date Completed:</label><br>
+  <input type="text" id="project_date_completed" name="project[date_completed]"><br><br> %>
+
+  <label for="project_notes">Notes:</label><br>
+  <textarea name="project[notes]" id="project_notes" rows="2"></textarea><br><br>
 
   <input type="submit" value="Create Project">
 
