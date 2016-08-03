@@ -1,19 +1,43 @@
 class UsersController < ApplicationController
 
   get '/signup' do
-    @user = User.new
-    erb :'users/signup'
+    if session[:user_id]
+      redirect "/projects"
+    else
+      @user = User.new
+      erb :'users/signup'
+    end
   end
 
   post '/signup' do
-    @user = User.create(params[:user])
-    redirect "/users/#{@user.id}"
+    # TODO: Add validations to User model
+    @user = User.new(user_params)
+    if @user.save
+      session[:user_id] = @user.id
+      redirect "/projects"
+    else
+      erb :'users/signup'
+    end
   end
 
   get '/login' do
+    if session[:user_id]
+      redirect "/projects"
+    else
+      @user = User.new
+      erb :'users/login'
+    end
   end
 
   post '/login' do
+    # TODO: Add validations to User model
+    @user = User.find_by_username(params[:user][:username])
+    if @user && @user.authenticate(params[:user][:password])
+      session[:user_id] = @user.id
+      redirect '/projects'
+    else
+      erb :'users/login'
+    end
   end
 
   get '/users/:id' do
