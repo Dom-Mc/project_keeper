@@ -11,3 +11,11 @@
     <%= project.status %><br>
     <%= project.deadline %><br><br>
 <% end %>
+
+
+<br><br>
+
+<form action="/users/<%= @user.username %>/delete" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Account">
+</form>
