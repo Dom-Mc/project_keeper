@@ -1,0 +1,13 @@
+<h1>User Profile</h1>
+
+<%= @user.username %><br>
+<%= @user.first_name %><br>
+<%= @user.last_name %><br>
+<%= @user.email %><br><br>
+
+<h2>Projects</h2>
+<% @projects.each do |project| %>
+    <%= project.name %><br>
+    <%= project.status %><br>
+    <%= project.deadline %><br><br>
+<% end %>
