@@ -47,8 +47,8 @@ class UsersController < ApplicationController
   end
 
   get '/users/:username' do
-    # NOTE: create slug
-    if session[:user_id]
+    @user = User.find_by_username(params[:username])
+    if @user.id == session[:user_id]
       @user = User.find_by(id: session[:user_id])
       @projects = @user.projects
       erb :'users/show'
@@ -58,7 +58,6 @@ class UsersController < ApplicationController
   end
 
   get '/users/:username/edit' do
-    # binding.pry
     @user = User.find_by_username(params[:username])
     if @user.id == session[:user_id]
       erb :'users/edit'
@@ -69,9 +68,8 @@ class UsersController < ApplicationController
 
   patch '/users/:username' do
     @user = User.find_by_username(params[:username])
-    @user.update(params[:user])
-    if @user.save
-      redirect "/users/#{@user.id}"
+    if @user.update(params[:user])
+      redirect "/users/#{@user.username}"
     else
       erb :'users/edit'
     end
