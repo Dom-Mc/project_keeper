@@ -10,8 +10,9 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
+    # binding.pry
     # TODO: Add validations to User model
-    @user = User.new(user_params)
+    @user = User.new(params[:user])
     if @user.save
       session[:user_id] = @user.id
       redirect "/projects"
@@ -45,25 +46,40 @@ class UsersController < ApplicationController
     redirect '/login'
   end
 
-  get '/users/:id' do
+  get '/users/:username' do
     # NOTE: create slug
     if session[:user_id]
-      @current_user = User.find_by(id: session[:user_id])
+      @user = User.find_by(id: session[:user_id])
+      @projects = @user.projects
       erb :'users/show'
     else
       redirect "/login"
     end
   end
 
-  get '/users/edit' do
-
+  get '/users/:username/edit' do
+    # binding.pry
+    @user = User.find_by_username(params[:username])
+    if @user.id == session[:user_id]
+      erb :'users/edit'
+    else
+      redirect "/"
+    end
   end
 
-  patch '/users/update' do
-
+  patch '/users/:username' do
+    @user = User.find_by_username(params[:username])
+    @user.update(params[:user])
+    if @user.save
+      redirect "/users/#{@user.id}"
+    else
+      erb :'users/edit'
+    end
   end
 
-  delete '/users/delete' do
+  delete '/users/:username/delete' do
+    User.find_by_username(params[:username]).delete
+    redirect to '/'
   end
 
 end
