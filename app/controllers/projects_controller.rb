@@ -1,19 +1,45 @@
 class ProjectsController < ApplicationController
 
-  get '/projects' do
-    erb :'projects/index'
+  get '/:username/projects' do
+    @user = User.find_by_username(params[:username])
+    if @user.id == session[:user_id]
+      @projects = @user.projects
+      erb :'projects/index'
+    else
+      redirect '/'
+    end
   end
 
-  get '/projects/new' do
-    erb :'projects/new'
+  get '/:username/projects/new' do
+    @user = User.find_by_username(params[:username])
+    if @user.id == session[:user_id]
+      @project = Project.new
+      erb :'projects/new'
+    else
+      redirect '/'
+    end
   end
 
-  post '/projects' do
-    @project = Project.create(params[:project])
+  post '/:username/projects' do
+    @user = User.find_by_username(params[:username])
+    if @user.id == session[:user_id]
+      @project = Project.create(params[:project])
+      @user.projects << @project
+      redirect "/#{@user.username}/projects/#{@project.id}"
+    else
+      erb :'projects/new'
+    end
   end
 
-  get '/projects/:id' do
-    # NOTE: create slug
+  get '/:username/projects/:id' do
+    @user = User.find_by_username(params[:username])
+    if @user.id == session[:user_id]
+      @project = Project.find_by_id(params[:id])
+      # NOTE: create slug
+      erb :'projects/show'
+    else
+      redirect '/'
+    end
   end
 
   get '/projects/edit' do
