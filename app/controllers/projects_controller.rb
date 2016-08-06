@@ -20,47 +20,44 @@ class ProjectsController < ApplicationController
     @project = Project.new(params[:project])
     if @project.save
       @user.projects << @project
-      redirect "/#{@user.username}/projects/#{@project.id}"
+      redirect "/#{@user.username}/projects/#{@project.slug}"
     else
       # TODO: Add flash message (list errors)
       erb :'projects/new'
     end
   end
 
-  get '/:username/projects/:id' do
+  get '/:username/projects/:slug' do
     verify_logged_in
     verify_correct_user
-    @project = Project.find_by(id: params[:id])
-    # NOTE: create and add slug
+    @project = Project.find_by_slug(params[:slug])
     erb :'projects/show'
   end
 
-# TODO: fix routes
-  get '/projects/edit' do
+  get '/:username/projects/:slug/edit' do
     verify_logged_in
     verify_correct_user
-    # binding.pry
-    @project = Project.find_by(id: params[:id])
+    @project = Project.find_by_slug(params[:slug])
     erb :'projects/edit'
   end
 
-  patch '/projects/update' do
+  patch '/:username/projects/:slug' do
     verify_logged_in
     verify_correct_user
-    @project = Project.find_by(id: params[:id])
-    if @project.update(params[:user])
+    @project = Project.find_by_slug(params[:slug])
+    if @project.update(params[:project])
       # TODO: add flash message (successfully updated)
-      redirect "/#{@user.username}/projects/#{@project.id}" # TODO: change redirect location
+      redirect "/#{@user.username}/projects/#{@project.slug}"
     else
       # TODO: add flash message (list errors)
       erb :'users/edit'
     end
   end
 
-  delete '/projects/delete' do
+  delete '/:username/projects/:slug/delete' do
     verify_logged_in
     verify_correct_user
-    Project.find_by(id: params[:id]).destroy
+    Project.find_by_slug(params[:slug]).destroy
     # TODO: add flash message (successfully deleted)
     redirect to "/#{@user.username}/projects"
   end
