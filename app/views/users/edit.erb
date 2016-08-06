@@ -1,23 +1,35 @@
-<h1>Edit Profile</h1>
+<div class="container">
+  <h1>Edit Profile</h1>
 
-<form action="/users/<%= @user.username %>" method="post">
-  <input id="hidden" type="hidden" name="_method" value="patch">
+  <form action="/users/<%= @user.username %>" method="post">
+    <input id="hidden" type="hidden" name="_method" value="patch">
 
-  <label for="user_first_name">First Name:</label><br>
-  <input type="text" id="user_first_name" name="user[first_name]"  value="<%= @user.first_name %>"><br><br>
+    <div class="form-group">
+      <label for="user_first_name">First Name:</label><br>
+      <input type="text" id="user_first_name" class="form-control" name="user[first_name]"  value="<%= @user.first_name %>"><br><br>
+    </div>
 
-  <label for="user_last_name">Last Name:</label><br>
-  <input type="text" id="user_last_name" name="user[last_name]" value="<%= @user.last_name %>"> <br><br>
+    <div class="form-group">
+      <label for="user_last_name">Last Name:</label><br>
+      <input type="text" id="user_last_name" class="form-control" name="user[last_name]" value="<%= @user.last_name %>"> <br><br>
+    </div>
 
-  <label for="user_email">Email:</label><br>
-  <input type="email" id="user_email" name="user[email]" value="<%= @user.email %>"><br><br>
+    <div class="form-group">
+      <label for="user_email">Email:</label><br>
+      <input type="email" id="user_email"  class="form-control" name="user[email]" value="<%= @user.email %>"><br><br>
+    </div>
 
-  <label for="user_password">Password (6-15 characters):</label><br>
-  <input type="password" id="user_password" name="user[password]" placeholder="Enter new password"><br><br>
+    <div class="form-group">
+      <label for="user_password">Password (6-15 characters):</label><br>
+      <input type="password" id="user_password" class="form-control" name="user[password]" placeholder="Enter new password"><br><br>
+    </div>
 
-  <label for="user_password_confirmation">Confirm Password:</label><br>
-  <input type="password" id="user_password_confirmation" name="user[password_confirmation]" placeholder="Renter new password"><br><br>
+    <div class="form-group">
+      <label for="user_password_confirmation">Confirm Password:</label><br>
+      <input type="password" id="user_password_confirmation" class="form-control" name="user[password_confirmation]" placeholder="Renter new password"><br><br>
+    </div>
 
-  <input type="submit" value="Update Profile">
+    <input type="submit" value="Update Profile">
 
-</form>
+  </form>
+</div>
