@@ -1,13 +1,15 @@
-<h1>Login</h1>
+<div class="container">
+    <form class="form-signin" action="/login" method="post">
 
-<form action="/login" method="post">
+      <h1 class="form-signin-heading text-center">Please Login</h1>
 
-  <label for="user_username">Username:</label><br>
-  <input type="text" id="user_username" name="user[username]" value="<%= @user.username %>"><br><br>
+      <label for="user_username" class="sr-only">Username:</label>
+      <input type="text" id="user_username" class="form-control" name="user[username]" value="<%= @user.username %>" placeholder="Username" required autofocus>
 
-  <label for="user_password">Password (6-15 characters):</label><br>
-  <input type="password" id="user_password" name="user[password]"><br><br>
+      <label for="user_password" class="sr-only">Password:</label>
+      <input type="password" id="user_password" class="form-control" name="user[password]" placeholder="Password" required>
 
-  <input type="submit" value="Login">
+      <input class="btn btn-lg btn-primary btn-block" type="submit" value="Login">
 
-</form>
+    </form>
+</div><!-- /container -->
