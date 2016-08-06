@@ -13,10 +13,10 @@
   <input type="text" id="project_date_started" name="project[date_started]" placeholder=" Day-Month-Year" value="<%= @project.date_started %>"><br><br>
 
   <label for="project_status">Status:</label><br>
-  <select name="pick_an_order" id="project_status" name="project[status]">
-    <option value="First">In Progress</option>
-    <option value="Second">On Hold</option>
-    <option value="Third">Completed</option>
+  <select id="project_status" name="project[status]">
+    <option value="In Progress">In Progress</option>
+    <option value="On Hold">On Hold</option>
+    <option value="Completed">Completed</option>
   </select><br><br>
 
   <label for="project_date_completed">Date Completed:</label><br>
