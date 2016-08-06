@@ -1,11 +1,32 @@
 <h1>Project</h1>
 
-<% @projects.each do |project| %>
-    <p>Project Name: <%= project.name %></p>
-    <p>Deadline: <%= project.deadline %></p>
-    <p>Date Started: <%= project.date_started %></p>
-    <p>Project Status: <%= project.status %></p>
-    <p>Date Completed: <%= project.date_completed %></p>
-    <p>Description: <%= project.description %></p>
-    <p>Notes: <%= project.notes %></p><br><br>
-<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Project #</th>
+      <th>Name:</th>
+      <th>Deadline:</th>
+      <th>Date Started:</th>
+      <th>Project Status:</th>
+      <th>Date Completed:</th>
+      <th>Description:</th>
+      <th>Notes:</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projects.each.with_index(1) do |project, row_index| %>
+      <tr>
+        <th scope="row"><%= row_index %></th>
+        <td><%= project.name %></td>
+        <td><%= project.deadline %></td>
+        <td><%= project.date_started %></td>
+        <td><%= project.status %></td>
+        <td><%= project.date_completed %></td>
+        <td><%= project.description %></td>
+        <td><%= project.notes %></td><br><br>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
