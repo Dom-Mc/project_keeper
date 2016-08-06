@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160801210343) do
+ActiveRecord::Schema.define(version: 20160806020406) do
 
   create_table "projects", force: :cascade do |t|
-    t.string   "name",                           null: false
+    t.string   "name",                                   null: false
     t.text     "description"
-    t.string   "date_started",                   null: false
+    t.string   "date_started",                           null: false
     t.string   "date_completed"
     t.string   "deadline"
     t.text     "notes"
-    t.boolean  "status",         default: false, null: false
+    t.string   "status",         default: "In Progress", null: false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20160801210343) do
     t.string   "username",        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["username"], name: "index_users_on_username"
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
 end
