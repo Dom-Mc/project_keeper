@@ -1,29 +1,26 @@
 class UsersController < ApplicationController
 
   get '/signup' do
-    if session[:user_id]
-      redirect "/projects"
-    else
-      @user = User.new
-      erb :'users/signup'
-    end
+    redirect "/#{current_user.username}/projects" if logged_in? #!current_user.nil?
+    @user = User.new
+    erb :'users/signup'
   end
 
   post '/signup' do
-    # binding.pry
-    # TODO: Add validations to User model
     @user = User.new(params[:user])
     if @user.save
-      session[:user_id] = @user.id
-      redirect "/projects"
+      log_in(@user) #session[:user_id] = @user.id
+      # TODO: add flash message (success)
+      redirect "/#{@user.username}/projects" # NOTE: change redirect to user's profile?
     else
+      # TODO: add flash message (failure)
       erb :'users/signup'
     end
   end
 
   get '/login' do
-    if session[:user_id]
-      redirect "/projects"
+    if logged_in? #!current_user.nil?
+      redirect "/#{current_user.username}/projects"
     else
       @user = User.new
       erb :'users/login'
@@ -31,52 +28,55 @@ class UsersController < ApplicationController
   end
 
   post '/login' do
-    # TODO: Add validations to User model
-    @user = User.find_by_username(params[:user][:username])
+    @user = User.find_by(username: params[:user][:username])
     if @user && @user.authenticate(params[:user][:password])
-      session[:user_id] = @user.id
-      redirect '/projects'
+      log_in(@user) #session[:user_id] = @user.id
+      # TODO: add flash message (success)
+      redirect "/#{@user.username}/projects"
     else
+      # TODO: add flash message (unsuccessful login)
       erb :'users/login'
     end
   end
 
   get '/logout' do
-    session.clear if session[:user_id]
-    redirect '/login'
+    verify_logged_in
+    session.delete(:user_id)
+    @current_user = nil
+    # TODO: add flash message (successful logout)
+    redirect '/'
   end
 
   get '/users/:username' do
-    @user = User.find_by_username(params[:username])
-    if @user.id == session[:user_id]
-      @user = User.find_by(id: session[:user_id])
-      @projects = @user.projects
-      erb :'users/show'
-    else
-      redirect "/login"
-    end
+    verify_logged_in
+    verify_correct_user
+    @projects = @user.projects
+    erb :'users/show'
   end
 
   get '/users/:username/edit' do
-    @user = User.find_by_username(params[:username])
-    if @user.id == session[:user_id]
-      erb :'users/edit'
-    else
-      redirect "/"
-    end
+    verify_logged_in
+    verify_correct_user
+    erb :'users/edit'
   end
 
   patch '/users/:username' do
-    @user = User.find_by_username(params[:username])
+    verify_logged_in
+    verify_correct_user
     if @user.update(params[:user])
-      redirect "/users/#{@user.username}"
+      # TODO: add flash message (successfully updated)
+      redirect "/users/#{@user.username}" # TODO: change redirect location
     else
+      # TODO: add flash message (list errors)
       erb :'users/edit'
     end
   end
 
   delete '/users/:username/delete' do
-    User.find_by_username(params[:username]).delete
+    verify_logged_in
+    verify_correct_user
+    @user.destroy #@user.delete
+    # TODO: add flash message (successfully deleted account)
     redirect to '/'
   end
 
