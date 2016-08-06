@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in(@user) #session[:user_id] = @user.id
       # TODO: add flash message (success)
-      redirect "/#{@user.username}/projects" # NOTE: change redirect to user's profile?
+      redirect "users/#{@user.username}"
     else
       # TODO: add flash message (failure)
       erb :'users/signup'
@@ -19,12 +19,9 @@ class UsersController < ApplicationController
   end
 
   get '/login' do
-    if logged_in? #!current_user.nil?
-      redirect "/#{current_user.username}/projects"
-    else
-      @user = User.new
-      erb :'users/login'
-    end
+    redirect "users/#{current_user.username}" if logged_in? #!current_user.nil?
+    @user = User.new
+    erb :'users/login'
   end
 
   post '/login' do
@@ -32,7 +29,7 @@ class UsersController < ApplicationController
     if @user && @user.authenticate(params[:user][:password])
       log_in(@user) #session[:user_id] = @user.id
       # TODO: add flash message (success)
-      redirect "/#{@user.username}/projects"
+      redirect "users/#{@user.username}"
     else
       # TODO: add flash message (unsuccessful login)
       erb :'users/login'
