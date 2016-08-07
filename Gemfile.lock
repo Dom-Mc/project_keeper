@@ -31,6 +31,8 @@ GEM
       byebug (~> 9.0)
       pry (~> 0.10)
     rack (1.6.4)
+    rack-flash3 (1.0.5)
+      rack
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
@@ -78,6 +80,7 @@ DEPENDENCIES
   bcrypt
   pry
   pry-byebug
+  rack-flash3
   rake
   require_all
   shotgun
