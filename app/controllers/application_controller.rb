@@ -1,4 +1,8 @@
+require 'rack-flash'
 class ApplicationController < Sinatra::Base
+
+  #:sweep => true will set stale flash entries to be cleared regardless if they've been accessed
+  use Rack::Flash, :sweep => true
 
   configure do
     set :public_folder, 'public'
@@ -39,6 +43,10 @@ class ApplicationController < Sinatra::Base
         # TODO: flash message (please login)
         redirect '/login'
       end
+    end
+
+    def truncate(text, max_length)
+      text.length > max_length ? "#{text[0...max_length]}..." : text
     end
 
 end
