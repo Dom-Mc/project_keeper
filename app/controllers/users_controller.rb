@@ -10,10 +10,9 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       log_in(@user) #session[:user_id] = @user.id
-      # TODO: add flash message (success)
+      flash[:success] = "Welcome to Project Keeper. Your account has been successfully created!"
       redirect "users/#{@user.username}"
     else
-      # TODO: add flash message (failure)
       erb :'users/signup'
     end
   end
@@ -28,10 +27,10 @@ class UsersController < ApplicationController
     @user = User.find_by(username: params[:user][:username])
     if @user && @user.authenticate(params[:user][:password])
       log_in(@user) #session[:user_id] = @user.id
-      # TODO: add flash message (success)
+      flash[:success] = "Welcome back to Project Keeper!"
       redirect "users/#{@user.username}"
     else
-      # TODO: add flash message (unsuccessful login)
+      flash[:danger] = "Invalid email/password combination."
       erb :'users/login'
     end
   end
@@ -40,7 +39,8 @@ class UsersController < ApplicationController
     verify_logged_in
     session.delete(:user_id)
     @current_user = nil
-    # TODO: add flash message (successful logout)
+    # TODO: Verify flash message works correctly on logout
+    flash[:success] = "You've successfully logged out. Hope to see you back soon!"
     redirect '/'
   end
 
@@ -61,10 +61,9 @@ class UsersController < ApplicationController
     verify_logged_in
     verify_correct_user
     if @user.update(params[:user])
-      # TODO: add flash message (successfully updated)
+      flash[:success] = "You've successfully edited your profile."
       redirect "/users/#{@user.username}" # TODO: change redirect location
     else
-      # TODO: add flash message (list errors)
       erb :'users/edit'
     end
   end
@@ -72,8 +71,9 @@ class UsersController < ApplicationController
   delete '/users/:username/delete' do
     verify_logged_in
     verify_correct_user
-    @user.destroy #@user.delete
-    # TODO: add flash message (successfully deleted account)
+    @user.destroy
+    # TODO: Check flash message correctly works when account is deleted
+    flash[:success] = "You've successfully deleted your account. We're sorry to see you leave but you're always welcome back!"
     redirect to '/'
   end
 
