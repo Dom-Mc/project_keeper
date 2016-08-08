@@ -1,0 +1,6 @@
+<div class="container">
+  <div role="alert" class="alert alert-dismissible alert-<%= flash.has?(:success) ? 'success' : 'danger' %>" >
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <%= flash.has?(:success) ? flash[:success] : flash[:danger] %>
+  </div>
+</div>
