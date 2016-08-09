@@ -5,8 +5,6 @@ class User < ActiveRecord::Base
   EMAIL_REGEX = /\A[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}\z/i
 
   before_save :alter_user_input
-  before_create :alter_user_input
-  before_update :alter_user_input
 
   validates :first_name, :last_name, presence: true,
                                      length: { maximum: 30 }
@@ -18,16 +16,12 @@ class User < ActiveRecord::Base
   validates :username, presence: true,
                        uniqueness: true,
                        length: { in: 3..25 },
-                       exclusion: { in: %w(admin administrator root),
+                       exclusion: { in: %w(admin administrator root password),
                          message: "%{value} is reserved." }
 
   validates :password, length: { in: 6..15 },
-                       presence: true,
-                       on: :save
-
-  validates :password, length: { in: 6..15 },
-                       allow_nil: true,
-                       on: :update
+                       presence: true, on: :create,
+                       allow_blank: true, on: :update
 
   private
 
