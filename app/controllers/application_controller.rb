@@ -1,4 +1,5 @@
 require 'rack-flash'
+require 'date'
 class ApplicationController < Sinatra::Base
 
   #:sweep => true will set stale flash entries to be cleared regardless if they've been accessed
@@ -14,7 +15,6 @@ class ApplicationController < Sinatra::Base
   get '/' do
     "Hello World!!!!"
   end
-
 
   private
 
@@ -48,5 +48,14 @@ class ApplicationController < Sinatra::Base
     def truncate(text, max_length)
       text.length > max_length ? "#{text[0...max_length]}..." : text
     end
+
+    def convert_date(date)
+      date.strftime("%b %d %Y") unless date.nil?
+    end
+
+    def current_year
+      Time.now.year
+    end
+  
 
 end
