@@ -1,5 +1,5 @@
 /* -----------------------------------------
-    Main
+    *Main*
 ----------------------------------------- */
 body {
     padding-top   : 40px;
@@ -12,6 +12,29 @@ body {
 html {
     position  : relative;
     min-height: 100%;
+}
+/* -----------------------------------------
+    Buttons
+----------------------------------------- */
+.btn {
+    padding         : 10px 16px;
+    font-size       : 18px;
+    line-height     : 1.3333333;
+    border-radius   : 6px;
+    color           : #fff;
+    background-color: #337ab7;
+    border-color    : #2e6da4;
+    margin-top      : 5rem;
+}
+/* -----------------------------------------
+    Debug
+----------------------------------------- */
+.debug {
+    margin-top : 45px;
+    background : white;
+    padding    : 25px;
+    font-family: monospace;
+    font-size  : 18px;
 }
 /* -----------------------------------------
     Forms (Bootstrap)
@@ -57,18 +80,9 @@ html {
     border-top-right-radius: 0;
 }
 /* -----------------------------------------
-    Debug
+    Footer
 ----------------------------------------- */
-.debug {
-    margin-top : 45px;
-    background : white;
-    padding    : 25px;
-    font-family: monospace;
-    font-size  : 18px;
-}
-/* -----------------------------------------
-    Sticky Footer (Bootstrap)
------------------------------------------ */
+/*sticky footer (Bootstrap)*/
 .footer {
     position: absolute;
     bottom  : 0;
@@ -84,6 +98,58 @@ html {
 
 .footer a:hover {
     text-decoration: none;
+}
+/* -----------------------------------------
+    Misc
+----------------------------------------- */
+.page-title {
+    text-align: center;
+    margin    : 10rem 0;
+    color     : #337ab7;
+}
+/* -----------------------------------------
+    Navigation
+----------------------------------------- */
+.navbar {
+    border          : 1px solid #e7e7e7;
+    background-color: rgba(255, 255, 255, 0.98);
+}
+
+.nav > li > a:active,
+.nav > li > a:focus,
+.nav > li > a:hover {
+    color           : white;
+    background-color: #337ab7;
+}
+
+.nav .open > a,
+.nav .open > a:focus,
+.nav .open > a:hover {
+    background-color: #337ab7;
+    color           : white;
+    /*border-color: #337ab7;*/
+}
+
+.dropdown-menu > li > a:focus,
+.dropdown-menu > li > a:hover {
+    color           : #262626;
+    text-decoration : none;
+    background-color: #f5f5f5;
+}
+
+.dropdown-menu > li > a {
+    padding: 8px 20px;
+}
+
+.dropdown-menu > li > a:hover,
+menu > li > a:focus {
+    color           : white;
+    text-decoration : none;
+    background-color: #337ab7;
+}
+
+.navbar-brand {
+    font-size: 3rem;
 }
 /* -----------------------------------------
     Table
@@ -105,12 +171,4 @@ tbody {
 .table-hover > tbody > tr:hover {
     background-color: #337ab7;
     color           : white;
-}
-/* -----------------------------------------
-    Misc
------------------------------------------ */
-.page-title {
-    text-align: center;
-    margin    : 10rem 0;
-    color     : #337ab7;
 }
