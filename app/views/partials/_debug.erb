@@ -1,0 +1,26 @@
+<% if Sinatra::Base.development? %>
+ <div class="container debug">
+   <p><strong>Params:</strong> <%= params.inspect %></p>
+   <p><strong>Flash:</strong> <%= flash unless flash.nil? %></p>
+   <p><strong>Session User ID:</strong> <%= session[:user_id] %></p>
+   <hr>
+   <% unless current_user.nil? %>
+     <p><strong>- Current User -</strong><p>
+     <p><strong>Username:</strong> <%= current_user.username %></p>
+     <p><strong>First Name:</strong> <%= current_user.first_name %></p>
+     <p><strong>Last Name:</strong> <%= current_user.last_name %></p>
+     <p><strong>Email:</strong> <%= current_user.email %></p>
+   <% end %>
+   <hr>
+   <% unless @project.nil? %>
+     <p><strong>- Project -</strong><p>
+     <p><strong>Name:</strong> <%= @project.name %></p>
+     <p><strong>Deadline:</strong> <%= @project.deadline %></p>
+     <p><strong>Date Started:</strong> <%= @project.date_started %></p>
+     <p><strong>Project Status:</strong> <%= @project.status %></p>
+     <p><strong>Date Completed:</strong> <%= @project.date_completed %></p>
+     <p><strong>Description:</strong> <%= @project.description %></p>
+     <p><strong>Notes:</strong> <%= @project.notes %></p>
+   <% end %>
+</div>
+<% end %>
