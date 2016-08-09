@@ -1,10 +1,20 @@
+/* -----------------------------------------
+    Main
+----------------------------------------- */
 body {
-    padding-top     : 40px;
-    padding-bottom  : 40px;
-    background-color: #eee;
+    padding-top   : 40px;
+    padding-bottom: 40px;
+    background    : rgb(255, 255, 255);
+    /* To account for Footer height */
+    margin-bottom : 60px;
+}
+
+html {
+    position  : relative;
+    min-height: 100%;
 }
 /* -----------------------------------------
-    Forms (from bootstrap)
+    Forms (Bootstrap)
 ----------------------------------------- */
 .form-signin {
     max-width: 330px;
@@ -49,10 +59,58 @@ body {
 /* -----------------------------------------
     Debug
 ----------------------------------------- */
-.params_debug {
+.debug {
     margin-top : 45px;
     background : white;
     padding    : 25px;
     font-family: monospace;
     font-size  : 18px;
+}
+/* -----------------------------------------
+    Sticky Footer (Bootstrap)
+----------------------------------------- */
+.footer {
+    position: absolute;
+    bottom  : 0;
+    width   : 100%;
+    /* Set the fixed height of the footer here */
+    height  : 60px;
+}
+
+.footer p {
+    float       : right;
+    margin-right: 10rem;
+}
+
+.footer a:hover {
+    text-decoration: none;
+}
+/* -----------------------------------------
+    Table
+----------------------------------------- */
+tbody {
+    border-bottom: 1px solid #ddd;
+}
+
+.clickable-row:hover {
+    /*tbody tr:hover {*/
+    cursor: pointer;
+    /* whatever other hover styles you want */
+}
+
+.clickable-row td:hover {
+    text-decoration: underline;
+}
+
+.table-hover > tbody > tr:hover {
+    background-color: #337ab7;
+    color           : white;
+}
+/* -----------------------------------------
+    Misc
+----------------------------------------- */
+.page-title {
+    text-align: center;
+    margin    : 10rem 0;
+    color     : #337ab7;
 }
