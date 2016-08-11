@@ -1,42 +1,49 @@
-<div class="container">
+<main class="container user signup">
+  <div class="row centered">
+    <div class="col-sm-6">
 
-<h1>Signup</h1>
-<%= erb :'partials/_user_error_messages' %>
+      <h1 class="page-title form-title">Signup</h1>
+      <%= erb :'partials/_user_error_messages' %>
 
-<form action="/signup" method="post">
+      <form action="/signup" method="post">
 
-  <div class="form-group">
-    <label for="user_first_name">First Name:</label>
-    <input type="text" id="user_first_name" class="form-control" name="user[first_name]" value="<%= @user.first_name %>">
-  </div>
+        <div class="form-group<%= ' has-error' if @user.errors[:first_name].any? %>">
+          <label for="user_first_name">First Name:</label>
+          <input type="text" id="user_first_name" class="form-control" name="user[first_name]" value="<%= @user.first_name %>">
+        </div><!-- /.form-group -->
 
-  <div class="form-group">
-    <label for="user_last_name">Last Name:</label>
-    <input type="text" id="user_last_name" class="form-control" name="user[last_name]" value="<%= @user.last_name %>">
-  </div>
+        <div class="form-group<%= ' has-error' if @user.errors[:last_name].any? %>">
+          <label for="user_last_name">Last Name:</label>
+          <input type="text" id="user_last_name" class="form-control" name="user[last_name]" value="<%= @user.last_name %>">
+        </div><!-- /.form-group -->
 
-  <div class="form-group">
-    <label for="user_email">Email:</label>
-    <input type="email" id="user_email" class="form-control" name="user[email]" value="<%= @user.last_name %>">
-  </div>
+        <div class="form-group<%= ' has-error' if @user.errors[:email].any? %>">
+          <label for="user_email">Email:</label>
+          <input type="email" id="user_email" class="form-control" name="user[email]" value="<%= @user.last_name %>">
+        </div>
 
-  <div class="form-group">
-    <label for="user_username">Username:</label>
-    <input type="text" id="user_username" class="form-control" name="user[username]" value="<%= @user.last_name %>" placeholder="Select a username">
-  </div>
+        <div class="form-group<%= ' has-error' if @user.errors[:password].any? %>">
+          <label for="user_username">Username:</label>
+          <input type="text" id="user_username" class="form-control" name="user[username]" value="<%= @user.last_name %>" placeholder="Select a username">
+        </div><!-- /.row -->
 
-  <div class="form-group">
-    <label for="user_password">Password:</label>
-    <input type="password" id="user_password" class="form-control" name="user[password]" placeholder="6-15 characters">
-  </div>
+        <div class="row">
+          <div class="form-group<%= ' has-error' if @user.errors[:password].any? %> col-sm-8">
+            <label for="user_password">Password:</label>
+            <input type="password" id="user_password" class="form-control" name="user[password]" placeholder="6-15 characters">
+          </div><!-- /.form-group -->
+        </div><!-- /.row -->
 
-  <div class="form-group">
-    <label for="user_password_confirmation">Confirm Password:</label>
-    <input type="password" id="user_password_confirmation" class="form-control" name="user[password_confirmation]">
-  </div>
+        <div class="row">
+          <div class="form-group<%= ' has-error' if @user.errors[:password_confirmation].any? %> col-sm-8">
+            <label for="user_password_confirmation">Confirm Password:</label>
+            <input type="password" id="user_password_confirmation" class="form-control" name="user[password_confirmation]">
+          </div><!-- /.form-group -->
+        </div><!-- /.row -->
 
-  <input type="submit" class="btn btn-default" value="Create Account">
+        <input type="submit" class="btn btn-default" value="Create Account">
+      </form>
 
-</form>
-
-</div><!-- /container -->
+    </div><!-- /.col-sm-6 -->
+  </div><!-- /.row -->
+</main>
