@@ -6,16 +6,16 @@ class Project < ActiveRecord::Base
   validates :name, presence: true,
                    length: { maximum: 50 },
                    uniqueness: { scope: :user_id,
-                     message: "Please choose a different project name, '{value}' is already in use." }
+                     message: "'%{value}' is already in use. Please choose a different project name." }
 
  validates :status, presence: true,
                     inclusion: { in: ["In Progress", "On Hold", "Completed"] }
 
   validates :date_started, :date_completed, :deadline, format: { with:  DATE_REGEX,
-                                              message: 'must be a valid date.',
+                                              message: 'must be in a valid format.',
                                               allow_blank: true }
 
-  validates :description, :notes, length: { maximum: 255 },
+  validates :description, :notes, length: { maximum: 1500 },
                                     allow_blank: true
 
   def slug
