@@ -1,9 +1,44 @@
-<h1><%= @project.name %></h1>
+<div class="container show project">
+<h1 class="page-title"><%= @project.name %></h1>
 
-<p>Project Name: <%= @project.name %></p>
-<p>Deadline: <%= @project.deadline %></p>
-<p>Date Started: <%= @project.date_started %></p>
-<p>Project Status: <%= @project.status %></p>
-<p>Date Completed: <%= @project.date_completed %></p>
-<p>Description: <%= @project.description %></p>
-<p>Notes: <%= @project.notes %></p><br><br>
+  <div class="row">
+    <section class="col-sm-7 col-sm-offset-2">
+
+
+      <p>Project Name: <span><%= @project.name %></span></p>
+      <p>Deadline: <span><%= convert_date(@project.deadline) %></span></p>
+      <p>Date Started: <span><%= convert_date(@project.date_started) %></span></p>
+      <p>Project Status: <span><%= @project.status %></span></p>
+      <% if @project.status == "Completed" %>
+          <h2>Date Completed: <span><%= convert_date(@project.date_completed) %></span></h2>
+      <% end %>
+      <p>Description: <span><%= @project.description %></span></p>
+      <p>Notes: <span><%= @project.notes %></span></p>
+
+
+      </section>
+
+    <div class="col-sm-3 hidden-xs">
+      <div class="row">
+      <a class="btn" href='<%= url("/#{@user.username}/projects/#{@project.slug}/edit") %>'>Edit Project</a>
+    </div>
+      <div class="row">
+      <a class="btn" href='<%= url("/#{@user.username}/projects") %>'>View Projects</a>
+    </div>
+  </div>
+
+  <div class="btn-group btn-group-justified visible-xs-block" role="group" aria-label="...">
+    <div class="btn-group" role="group">
+      <a class="btn" href='<%= url("/#{@user.username}/projects/#{@project.slug}/edit") %>'>Edit Project</a>
+    </div>
+    <div class="btn-group" role="group">
+      <a class="btn" href='<%= url("/#{@user.username}/projects") %>'>View Projects</a>
+
+    </div>
+  </div>
+
+    </div>
+
+
+  </div><!-- /.container -->
+<%= erb :'partials/_modal_project_delete' %>
