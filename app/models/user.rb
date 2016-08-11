@@ -20,8 +20,10 @@ class User < ActiveRecord::Base
                          message: "%{value} is reserved." }
 
   validates :password, length: { in: 6..15 },
-                       presence: true, on: :create,
-                       allow_blank: true, on: :update
+                       presence: true, on: :create
+
+  validates :password, length: { in: 6..15 },
+                         allow_blank: true, on: :update
 
   private
 
