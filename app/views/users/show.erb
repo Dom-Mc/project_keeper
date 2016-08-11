@@ -1,21 +1,45 @@
-<h1>User Profile</h1>
+<main class="container show user">
 
-<%= @user.username %><br>
-<%= @user.first_name %><br>
-<%= @user.last_name %><br>
-<%= @user.email %><br><br>
+  <div class="row">
+    <h1 class="page-title">Account Profile</h1>
 
-<h2>Projects</h2>
-<% @projects.each do |project| %>
-    <%= project.name %><br>
-    <%= project.status %><br>
-    <%= project.deadline %><br><br>
-<% end %>
+    <section class="col-sm-7 col-md-7 col-lg-6 col-lg-offset-1 account-info">
+      <h2 class="category-title">Account Information</h2>
+      <p>Username: <span><%= @user.username %></span></p>
+      <p>First Name: <span><%= @user.first_name %></span></p>
+      <p>Last Name: <span><%= @user.last_name %></span></p>
+      <p>Email: <span><%= @user.email %></span></p>
+      <p>Active Since: <span><%= @user.created_at.year %></span></p>
+      <p>Total Projects: <span><%= @user.projects.count %></span></p>
+      <div class="row hidden-xs">
+        <a class="btn" href='<%= url("/users/#{@user.username}/edit") %>'>Edit Account</a>
+      </div><!-- /.centered -->
+    </section>
 
+    <div class="recent col-sm-5 col-md-5 col-lg-5">
+      <h2 class="category-title">Recent projects</h2>
+      <% if @projects.empty? %>
+        <p>Looks like you don't have any projects.</p>
+        <div class="row hidden-xs">
+          <a class="btn" href='<%= url("/#{@user.username}/projects/new") %>'>Create Project</a>
+        </div><!-- /.row -->
+      <% else %>
+        <% @projects.each do |project|%>
+          <section>
+            <p>Project Name: <span><%= project.name %></span></p>
+            <p>Status: <span><%= project.status %></span></p>
+            <p>Deadline: <span><%= project.deadline %></span></p>
+            <a class="btn btn-sm" href='<%= url("/#{@user.username}/projects/#{project.slug}") %>'>View Project</a>
+          </section>
+        <% end %>
+      <% end %>
+    </div><!-- /.recent -->
 
-<br><br>
+  </div><!-- /.row -->
 
-<form action="/users/<%= @user.username %>/delete" method="post">
-  <input id="hidden" type="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete Account">
-</form>
+  <div class="row visible-xs-block">
+    <a class="btn" href='<%= url("/users/#{@user.username}/edit") %>'>Edit Account</a>
+  </div><!-- /.row -->
+
+</main><!-- /.container -->
+<%= erb :'partials/_modal_user_delete' %>
