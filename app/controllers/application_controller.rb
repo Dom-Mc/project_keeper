@@ -13,13 +13,17 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    "Hello World!!!!"
+    erb :home
   end
 
   private
 
     def log_in(user)
       session[:user_id] = user.id
+    end
+
+    def logged_in?
+      !current_user.nil? #!!session[:user_id]
     end
 
     def current_user
@@ -32,16 +36,44 @@ class ApplicationController < Sinatra::Base
     def verify_correct_user
       @user = User.find_by(username: params[:username])
       redirect "/#{@current_user.username}/projects" unless @user == current_user
+      # @user
+    end
+    def correct_user? #replace verify_correct_user
+      if (@user = User.find_by(username: params[:username]))
+        redirect "users/#{@current_user.username}" unless @user == current_user
+        true
+      else
+        false
+      end
     end
 
-    def logged_in?
-      !current_user.nil? #!!session[:user_id]
-    end
-
-    def verify_logged_in
-      unless logged_in?
+    # def verify_logged_in
+    #   if !logged_in?
+    #     # TODO: flash message (please login)
+    #     redirect '/login'
+    #   else
+    #     verify_correct_user
+    #   end
+    #   @user
+    # end
+    def user_authenticated? #replace verify_logged_in
+      if !logged_in?
         # TODO: flash message (please login)
         redirect '/login'
+        false
+      else
+        correct_user? #
+      end
+    end
+
+
+    def slugify(slug)
+      if @project ||= Project.find_by_slug(slug)
+        @slug ||= @project.slug
+        @project
+      else
+        flash[:danger] = "Ooops looks like an error occurred."
+        redirect "/#{@current_user.username}/projects" # TODO: change to @current_user.username
       end
     end
 
@@ -56,6 +88,5 @@ class ApplicationController < Sinatra::Base
     def current_year
       Time.now.year
     end
-  
 
 end
