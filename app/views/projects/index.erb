@@ -1,4 +1,4 @@
-<div class="container">
+<main class="container project index">
   <h1 class="page-title">List of Projects</h1>
 
   <table class="table table-striped table-hover table-responsive">
@@ -16,21 +16,30 @@
     </thead>
 
     <tbody>
+
       <% @projects.each.with_index(1) do |project, row_index| %>
-         <tr class='clickable-row' data-href='<%= url("/#{@user.username}/projects/#{project.slug}") %>'>
-          <th scope="row"><%= row_index %></th>
-          <td><%= project.name %></td>
-          <td><%= project.deadline %></td>
-          <td><%= project.date_started %></td>
-          <td><%= project.status %></td>
-          <td><%= project.date_completed %></td>
-          <td><%= project.description %></td>
-          <td><%= project.notes %></td>
-        </tr>
+
+      <tr class='clickable-row' data-href='<%= url("/#{@user.username}/projects/#{project.slug}") %>'>
+        <th scope="row"><%= row_index %></th>
+        <td ><%= project.name %></td>
+        <td><%= convert_date(project.deadline) %></td>
+        <td><%= convert_date(project.date_started) %></td>
+        <td><%= project.status %></td>
+        <td><%= convert_date(project.date_completed) %></td>
+        <td><%= truncate(project.description, 20) %></td>
+        <td><%= truncate(project.notes, 20) %></td>
+      </tr>
       <% end %>
     </tbody>
 
   </table>
+
+  <% if @projects.empty? %>
+    <p class="empty">You currently do not have any projects.</p>
+  <% else %>
+    <p>*Select a project from the list above or click <i>Create Project</i> to get started on a new one.</p>
+  <% end %>
+
   <a class="btn" href='<%= url("/#{@user.username}/projects/new") %>'>Create Project</a>
 
-</div><!-- /.container -->
+</main>
