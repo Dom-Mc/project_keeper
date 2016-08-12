@@ -16,7 +16,6 @@
     </thead>
 
     <tbody>
-
       <% @projects.each.with_index(1) do |project, row_index| %>
 
       <tr class='clickable-row' data-href='<%= url("/#{@user.username}/projects/#{project.slug}") %>'>
@@ -24,14 +23,25 @@
         <td ><%= project.name %></td>
         <td><%= convert_date(project.deadline) %></td>
         <td><%= convert_date(project.date_started) %></td>
-        <td><%= project.status %></td>
+        <td>
+          <i class="fa
+          <% if project.status == "In Progress"%>
+            fa-hourglass-start
+          <% elsif project.status == "On Hold" %>
+            fa-hand-paper-o
+          <% else %>
+            fa-check
+          <% end %>
+          "></i>
+          <%= project.status %>
+        </td>
         <td><%= convert_date(project.date_completed) %></td>
         <td><%= truncate(project.description, 20) %></td>
         <td><%= truncate(project.notes, 20) %></td>
       </tr>
       <% end %>
+      
     </tbody>
-
   </table>
 
   <% if @projects.empty? %>
