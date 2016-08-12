@@ -1,44 +1,56 @@
-<div class="container">
-  <h1>Create a new project</h1>
-  <%= erb :'partials/_project_error_messages' %>
+<main class="container">
+  <div class="centered row">
+    <div class="col-sm-6">
 
-  <form action="/<%= @user.username %>/projects" method="post">
+      <h1 class="page-title form-title">Create a new project</h1>
+      <%= erb :'partials/_project_error_messages' %>
 
-    <div class="form-group<%= ' has-error' if @project.errors[:name].any? %>">
-      <label for="project_name">Name:</label>
-      <input type="text" id="project_name" class="form-control" name="project[name]" placeholder=" Project Name" value="<%= @project.name %>">
-    </div>
+      <form action="/<%= @user.username %>/projects" method="post">
 
-    <div class="form-group<%= ' has-error' if @project.errors[:deadline].any? %>">
-      <label for="project_deadline">Deadline:</label>
-      <input type="date" id="project_deadline" class="form-control" name="project[deadline]" placeholder="Year-Month-Day" value="<%= @project.deadline %>">
-    </div>
+        <div class="form-group<%= ' has-error' if @project.errors[:name].any? %>">
+          <label for="project_name">Name:</label>
+          <input type="text" id="project_name" class="form-control" name="project[name]" placeholder=" Project Name" value="<%= @project.name %>">
+        </div><!-- /.form-group -->
 
-    <div class="form-group<%= ' has-error' if @project.errors[:date_started].any? %>">
-      <label for="project_date_started">Started Date:</label>
-      <input type="date" id="project_date_started" class="form-control" name="project[date_started]" placeholder="Year-Month-Day" value="<%= @project.date_started %>">
-    </div>
+        <div class="row">
+          <div class="form-group<%= ' has-error' if @project.errors[:deadline].any? %> col-sm-6">
+            <label for="project_deadline">Deadline:</label>
+            <input type="date" id="project_deadline" class="form-control" name="project[deadline]" placeholder="Year-Month-Day" value="<%= @project.deadline %>">
+          </div><!-- /.form-group -->
+        </div><!-- /.row -->
 
-    <div class="form-group<%= ' has-error' if @project.errors[:status].any? %>">
-      <label for="project_status">Status:</label>
-      <select id="project_status" class="form-control" name="project[status]">
-        <option value="In Progress">In Progress</option>
-        <option value="On Hold">On Hold</option>
-        <option value="Completed" disabled>Completed</option>
-      </select>
-    </div>
+        <div class="row">
+          <div class="form-group<%= ' has-error' if @project.errors[:date_started].any? %> col-sm-6">
+            <label for="project_date_started">Started Date:</label>
+            <input type="date" id="project_date_started" class="form-control" name="project[date_started]" placeholder="Year-Month-Day" value="<%= @project.date_started %>">
+          </div><!-- /.form-group -->
+        </div><!-- /.row -->
 
-    <div class="form-group<%= ' has-error' if @project.errors[:description].any? %>">
-      <label for="project_description">Description:</label>
-      <textarea name="project[description]" id="project_description" class="form-control" rows="2"><%= @project.description %></textarea>
-    </div>
+        <div class="form-group<%= ' has-error' if @project.errors[:status].any? %>">
+          <label for="project_status">Status:</label>
+          <select id="project_status" class="form-control" name="project[status]">
+            <option value="In Progress">In Progress</option>
+            <option value="On Hold">On Hold</option>
+            <option value="Completed" disabled>Completed</option>
+          </select>
+        </div><!-- /.form-group -->
 
-    <div class="form-group<%= ' has-error' if @project.errors[:notes].any? %>">
-      <label for="project_notes">Notes:</label>
-      <textarea name="project[notes]" id="project_notes" class="form-control" rows="2"><%= @project.notes %></textarea>
-    </div>
+        <div class="form-group<%= ' has-error' if @project.errors[:description].any? %>">
+          <label for="project_description">Description:</label>
+          <textarea name="project[description]" id="project_description" class="form-control" rows="3"><%= @project.description %></textarea>
+        </div><!-- /.form-group -->
 
-    <input type="submit" class="btn" value="Create Project">
-  </form>
+        <div class="form-group<%= ' has-error' if @project.errors[:notes].any? %>">
+          <label for="project_notes">Notes:</label>
+          <textarea name="project[notes]" id="project_notes" class="form-control" rows="3"><%= @project.notes %></textarea>
+        </div><!-- /.form-group -->
 
-</div>
+        <div class="row centered">
+          <input type="submit" class="btn" value="Create Project">
+        </div><!-- /.row -->
+
+      </form>
+
+    </div><!-- /.col-sm-6 -->
+  </div><!-- /.row -->
+</main>
