@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   get '/signup' do
-    redirect "/#{current_user.username}/projects" if logged_in? #!current_user.nil?
+    redirect "/#{current_user.username}/projects" if logged_in?
     @user = User.new
     erb :'users/signup'
   end
@@ -9,8 +9,8 @@ class UsersController < ApplicationController
   post '/signup' do
     @user = User.new(params[:user])
     if @user.save
-      log_in(@user) #session[:user_id] = @user.id
-      flash[:success] = "Welcome to Project Keeper. Your account has been successfully created!"
+      log_in(@user)
+      flash[:success] = "Welcome to Project Keeper. Let's get started!"
       redirect "users/#{@user.username}"
     else
       erb :'users/signup'
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   get '/login' do
-    redirect "users/#{current_user.username}" if logged_in? #!current_user.nil?
+    redirect "users/#{current_user.username}" if logged_in?
     @user = User.new
     erb :'users/login'
   end
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   post '/login' do
     @user = User.find_by(username: params[:user][:username])
     if @user && @user.authenticate(params[:user][:password])
-      log_in(@user) #session[:user_id] = @user.id
+      log_in(@user)
       flash[:success] = "Welcome back to Project Keeper!"
       redirect "users/#{@user.username}"
     else
@@ -36,43 +36,38 @@ class UsersController < ApplicationController
   end
 
   get '/logout' do
-    verify_logged_in
-    session.delete(:user_id)
-    @current_user = nil
-    # TODO: Verify flash message works correctly on logout
-    flash[:success] = "You've successfully logged out. Hope to see you back soon!"
+    if logged_in?
+      session.clear
+      @current_user = nil
+      flash[:success] = "You've successfully logged out. Hope to see you back soon!"
+    end
     redirect '/'
   end
 
   get '/users/:username' do
-    verify_logged_in
-    verify_correct_user
-    @projects = @user.projects
+    user_authenticated?
+    @projects = @user.projects.take(3)
     erb :'users/show'
   end
 
   get '/users/:username/edit' do
-    verify_logged_in
-    verify_correct_user
+    user_authenticated?
     erb :'users/edit'
   end
 
   patch '/users/:username' do
-    verify_logged_in
-    verify_correct_user
+    user_authenticated?
     if @user.update(params[:user])
       flash[:success] = "You've successfully edited your profile."
-      redirect "/users/#{@user.username}" # TODO: change redirect location
+      redirect "/users/#{@user.username}"
     else
       erb :'users/edit'
     end
   end
 
   delete '/users/:username/delete' do
-    verify_logged_in
-    verify_correct_user
+    user_authenticated?
     @user.destroy
-    # TODO: Check flash message correctly works when account is deleted
     flash[:success] = "You've successfully deleted your account. We're sorry to see you leave but you're always welcome back!"
     redirect to '/'
   end
