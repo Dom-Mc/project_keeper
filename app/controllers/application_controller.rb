@@ -13,17 +13,18 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
+    @user = current_user
     erb :home
   end
 
-  private
+  helpers do
 
     def log_in(user)
       session[:user_id] = user.id
     end
 
     def logged_in?
-      !current_user.nil? #!!session[:user_id]
+      !current_user.nil?
     end
 
     def current_user
@@ -33,12 +34,7 @@ class ApplicationController < Sinatra::Base
       end
     end
 
-    def verify_correct_user
-      @user = User.find_by(username: params[:username])
-      redirect "/#{@current_user.username}/projects" unless @user == current_user
-      # @user
-    end
-    def correct_user? #replace verify_correct_user
+    def correct_user?
       if (@user = User.find_by(username: params[:username]))
         redirect "users/#{@current_user.username}" unless @user == current_user
         true
@@ -47,25 +43,15 @@ class ApplicationController < Sinatra::Base
       end
     end
 
-    # def verify_logged_in
-    #   if !logged_in?
-    #     # TODO: flash message (please login)
-    #     redirect '/login'
-    #   else
-    #     verify_correct_user
-    #   end
-    #   @user
-    # end
-    def user_authenticated? #replace verify_logged_in
+    def user_authenticated?
       if !logged_in?
-        # TODO: flash message (please login)
+        flash[:danger] = "Please login"
         redirect '/login'
         false
       else
-        correct_user? #
+        correct_user?
       end
     end
-
 
     def slugify(slug)
       if @project ||= Project.find_by_slug(slug)
@@ -89,4 +75,13 @@ class ApplicationController < Sinatra::Base
       Time.now.year
     end
 
+    def projects_show_page?
+      request.path == "/#{@current_user.username}/projects/#{@slug}"
+    end
+
+    def users_show_page?
+      request.path == "/users/#{@current_user.username}"
+    end
+
+  end
 end
