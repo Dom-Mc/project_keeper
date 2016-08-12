@@ -1,5 +1,6 @@
-<nav class="navbar navbar-fixed-top">
-  <div class="container">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
         <span class="sr-only">Toggle navigation</span>
@@ -14,14 +15,24 @@
       <ul class="nav navbar-nav navbar-right">
 
         <% if logged_in? %>
-          <li><a href='<%= url("/#{@user.username}/projects") %>'>Projects</a></li>
+
+          <% if projects_show_page? %>
+             <!-- Button trigger modal -->
+             <li><a id="delete-link" data-toggle="modal" data-target="#modalProjectDelete">Delete Project - <%= @project.name %></a></li>
+          <% elsif users_show_page? %>
+            <!-- Button trigger modal -->
+            <li><a id="delete-link" data-toggle="modal" data-target="#modalUserDelete">Delete Account</a></li>
+          <% end %>
+
+          <li><a href='<%= url("/#{@user.username}/projects/new") %>'>Create Project</a></li>
+          <li><a href='<%= url("/#{@user.username}/projects") %>'>View Projects</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href='<%= url("/users/#{@user.username}") %>'>Profile</a></li>
               <li role="separator" class="divider"></li>
               <li><a href="<%= url('/logout') %>">Logout</a></li>
-            </ul><!--/.dropdown-toggle -->
+            </ul>
           </li>
 
         <% else %>
@@ -29,7 +40,7 @@
           <li><a href="<%= url('/login') %>">Login</a></li>
         <% end %>
 
-      </ul><!--/.nav -->
+      </ul>
     </div><!--/.nav-collapse -->
 
   </div><!--/.container -->
