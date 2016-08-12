@@ -10,17 +10,16 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
 
     <!-- Bootstrap Styles-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href='<%= url("/assets/css/bootstrap.min.css") %>'>
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Suez+One' rel='stylesheet' type='text/css'>
 
     <!-- Custom Styles-->
-    <link rel="stylesheet" href="../../../assets/css/main.css">
+    <link rel="stylesheet" href='<%= url("/assets/css/main.css") %>'>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <%= erb :'partials/_html5_shim' %>
+
   </head>
   <body>
 
@@ -30,24 +29,15 @@
 
     <%= yield %>
 
-    <% if Sinatra::Base.development? %>
-     <div class="container params_debug">
-       <p><strong>Params:</strong> <%= params.inspect %></p>
-       <p><strong>Flash:</strong> <%= flash unless flash.nil? %></p>
-       <p><strong>Session User ID:</strong> <%= session[:user_id] %></p>
-       <hr>
-       <% unless current_user.nil? %>
-         <p><strong>- Current User -</strong><p>
-         <p><strong>Username:</strong> <%= current_user.username %></p>
-         <p><strong>First Name:</strong> <%= current_user.first_name %></p>
-         <p><strong>Last Name:</strong> <%= current_user.last_name %></p>
-         <p><strong>Email:</strong> <%= current_user.email %></p>
-       <% end %>
-    </div>
-    <% end %>
+    <%# erb :'partials/_debug' %>
 
+    <%= erb :'partials/_footer' %>
+
+    <!-- Bootstrap & jQuery js -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src='<%= url("/assets/js/bootstrap.min.js") %>'></script>
+    <!-- Custom js -->
+    <script src='<%= url("/assets/js/main.js") %>'></script>
 
   </body>
 </html>
