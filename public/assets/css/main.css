@@ -80,19 +80,8 @@ html {
 .show.project .btn {
     margin-top: 3rem;
 }
-@media (max-width: 768px) {
-    .show.project .btn {
-        display: block;
-        width  : 100%;
-    }
-}
-@media (min-width:769px) {
-    .show.user .btn:not(.btn-sm) {
-        margin: 2.5rem 0 0 .7rem;
-    }
-}
 @media (max-width:768px) {
-    .show.user .btn:not(.btn-sm) {
+    .action-btn {
         display: block;
         width  : 100%;
     }
@@ -152,8 +141,9 @@ html {
 }
 
 label {
-    font-size : 1.4rem;
-    margin-top: 1.1rem;
+    font-size    : 1.4rem;
+    margin-top   : 10px;
+    margin-bottom: 0;
 }
 /* -----------------------------------------
     Footer
@@ -186,16 +176,16 @@ table .fa {
 /* -----------------------------------------
     Layout
 ----------------------------------------- */
-.centered {
-    text-align: center;
-    font-size : 0;
-}
+@media (min-width: 769px) {
+    .row.centered > div {
+        float     : none;
+        display   : inline-block;
+        text-align: left;
+    }
 
-.centered > div {
-    float     : none;
-    display   : inline-block;
-    text-align: left;
-    font-size : 13px;
+    .row.centered {
+        text-align: center;
+    }
 }
 /* -----------------------------------------
     Modal
@@ -299,13 +289,13 @@ menu > li > a:focus {
 ----------------------------------------- */
 .page-title {
     text-align: center;
-    margin    : 5rem 0 8rem;
+    margin    : 5rem 0 6rem;
     color     : #337ab7;
     font-size : 3rem;
 }
 
 .form-title {
-    margin: 10rem 0 4rem;
+    margin: 5rem 0 4rem;
 }
 /* Login Page ------------------------*/
 .form-signin-heading {
