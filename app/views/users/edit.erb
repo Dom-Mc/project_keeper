@@ -5,7 +5,7 @@
       <h1 class="page-title form-title">Edit Profile</h1>
       <%= erb :'partials/_user_error_messages' %>
 
-      <form action="/users/<%= @user.username %>" method="post">
+      <form action="/<%= @user.username %>" method="post">
         <input id="hidden" type="hidden" name="_method" value="patch">
 
         <div class="form-group<%= ' has-error' if @user.errors[:first_name].any? %>">
@@ -38,7 +38,7 @@
         </div><!-- /.row -->
 
         <div class="centered">
-          <input class="btn" type="submit" value="Update Profile">
+          <input class="btn action-btn" type="submit" value="Update Profile">
         </div><!-- /.centered -->
 
       </form>

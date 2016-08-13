@@ -12,7 +12,7 @@
       <p>Active Since: <span><%= @user.created_at.year %></span></p>
       <p>Total Projects: <span><%= @user.projects.count %></span></p>
       <div class="row hidden-xs">
-        <a class="btn" href='<%= url("/users/#{@user.username}/edit") %>'>Edit Account</a>
+        <a class="btn" href='<%= url("/#{@user.username}/edit") %>'>Edit Account</a>
       </div><!-- /.centered -->
     </section>
 
@@ -38,7 +38,7 @@
   </div><!-- /.row -->
 
   <div class="row visible-xs-block">
-    <a class="btn" href='<%= url("/users/#{@user.username}/edit") %>'>Edit Account</a>
+    <a class="btn action-btn" href='<%= url("/#{@user.username}/edit") %>'>Edit Account</a>
   </div><!-- /.row -->
 
 </main><!-- /.container -->

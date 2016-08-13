@@ -2,7 +2,7 @@
   <div class="centered row">
     <div class="col-sm-6">
 
-      <h1 class="page-title form-title">Create a new project</h1>
+      <h1 class="page-title form-title">Create Project</h1>
       <%= erb :'partials/_project_error_messages' %>
 
       <form action="/<%= @user.username %>/projects" method="post">
@@ -46,7 +46,7 @@
         </div><!-- /.form-group -->
 
         <div class="row centered">
-          <input type="submit" class="btn" value="Create Project">
+          <input type="submit" class="btn action-btn" value="Create Project">
         </div><!-- /.row -->
 
       </form>
