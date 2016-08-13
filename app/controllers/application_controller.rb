@@ -36,7 +36,7 @@ class ApplicationController < Sinatra::Base
 
     def correct_user?
       if (@user = User.find_by(username: params[:username]))
-        redirect "users/#{@current_user.username}" unless @user == current_user
+        redirect "/#{@current_user.username}" unless @user == current_user
         true
       else
         false
@@ -80,7 +80,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def users_show_page?
-      request.path == "/users/#{@current_user.username}"
+      request.path == "/#{@current_user.username}"
     end
 
   end
