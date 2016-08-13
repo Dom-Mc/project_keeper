@@ -6,7 +6,7 @@ Project Keeper is CMS application designed to assist users in managing various p
 
 ## Instalation
 
-### (Step 1) Install the following gems on your local machine:
+#### (Step 1) Install the following gems on your local machine:
 ##### Bundler
 ```
 $ gem install bundler
@@ -24,10 +24,10 @@ $ gem install sinatra
 $ gem install shotgun
 ```
 
-### (Step 2) Create a fork of Project Keeper:
+#### (Step 2) Create a fork of Project Keeper:
 * [Click the **_Fork_** button on the top-right corner of the page](https://help.github.com/articles/fork-a-repo/).
 
-### (Step 3) Clone a local copy of the repository:
+#### (Step 3) Clone a local copy of the repository:
 * [Cick on the **_Clone or download_** dropbox.](https://help.github.com/articles/cloning-a-repository/)
 * Select either **_Clone with HTTPS_** or **_Clone with SSH_** and copy the clone the url.
 
@@ -46,19 +46,19 @@ Resolving deltas: 100% (394/394), done.
 Checking connectivity... done.
 ```
 
-### (Step 4) Use Bundler to install your project's gems:
+#### (Step 4) Use Bundler to install your project's gems:
 Bundler will Mange your application dependencies and create *Gemfile.lock* file.
 ```
 $ cd project_keeper/
 $ bundle install
 ```
 
-### (Step 5) Migrate your database:
+#### (Step 5) Migrate your database:
 ```
 $ bundle exec rake db:migrate
 ```
 
-### (Step 6) Startup your server (*shotgun*):
+#### (Step 6) Startup your server (*shotgun*):
 ```
 $ bundle exec shotgun
 == Shotgun/Thin on http://127.0.0.1:9393/
@@ -67,13 +67,14 @@ Maximum connections set to 1024
 Listening on 127.0.0.1:9393, CTRL+C to stop
 ```
 
-### (Step 7) Bring up Project Keeper in your browser:
-* Go to either http://127.0.0.1:9393/ or http://localhost:9393/ and verify Project Keeper is up and running!
+#### (Step 7) Bring up Project Keeper in your browser:
+* Go to either <http://127.0.0.1:9393/> or <http://localhost:9393/> and verify Project Keeper is up and running!
 
 
 ## Creator
 Dom McKellar
-* https://github.com/Dom-Mc
+* <http://newme.io/>
+* <https://github.com/Dom-Mc>
 
 
 ## License
