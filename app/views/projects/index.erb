@@ -50,6 +50,8 @@
     <p>*Select a project from the list above or click <i>Create Project</i> to get started on a new one.</p>
   <% end %>
 
-  <a class="btn action-btn" href='<%= url("/#{@user.username}/projects/new") %>'>Create Project</a>
+  <div class="row">
+    <a class="btn action-btn" href='<%= url("/#{@user.username}/projects/new") %>'>Create Project</a>
+  </div><!-- /.row -->
 
 </main>
