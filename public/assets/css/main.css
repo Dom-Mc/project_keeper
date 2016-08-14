@@ -45,12 +45,6 @@ html {
     border-color    : #204d74;
 }
 
-.btn-primary:hover,
-.btn:focus {
-    background-color   : #265a88;
-    background-position: 0 -15px;
-}
-
 .btn.btn-danger {
     /*color           : #fff;*/
     background-color: #d9534f;
@@ -68,6 +62,24 @@ html {
     background-color: #c9302c;
     border-color    : #761c19;
 }
+@media (max-width:768px) {
+    .action-btn {
+        display      : block;
+        width        : 100%;
+        border-radius: 0;
+    }
+}
+
+.login .btn-primary:hover,
+.login .btn:focus {
+    background-color   : #265a88;
+    background-position: 0 -15px;
+}
+@media (min-width:769px) {
+    .project.index .btn.action-btn {
+        margin: 4rem 0 0 3rem;
+    }
+}
 
 .show.user .btn-sm {
     margin       : .5rem 0 1.5rem;
@@ -77,14 +89,16 @@ html {
     border-radius: 3px;
 }
 
+.show.user .hidden-xs .btn {
+    margin: 4rem 0 0 .75rem;
+}
+
+.show.project .btn-group-justified {
+    margin-top: 4rem;
+}
+
 .show.project .btn {
     margin-top: 3rem;
-}
-@media (max-width:768px) {
-    .action-btn {
-        display: block;
-        width  : 100%;
-    }
 }
 /* -----------------------------------------
     Debug
@@ -211,9 +225,9 @@ table .fa {
     color: #337ab7;
 }
 
-.navbar-default .nav > li > a:focus,
-.navbar-default .nav > li > a:hover,
-.navbar-default .navbar .nav > li > a:active {
+#navbar .nav > li > a:focus,
+#navbar .nav > li > a:hover,
+#navbar .navbar .nav > li > a:active {
     color           : white;
     background-color: #337ab7;
 }
@@ -221,6 +235,16 @@ table .fa {
 .navbar-default .nav .open > a,
 .navbar-default .nav .open > a:focus,
 .navbar-default .nav .open > a:hover {
+    background-color: #337ab7;
+    color           : white;
+}
+
+#navbar > ul > li.dropdown > a:focus {
+    background-color: white;
+    color           : #337ab7;
+}
+
+#navbar > ul > li.dropdown > a:hover {
     background-color: #337ab7;
     color           : white;
 }
@@ -241,6 +265,18 @@ menu > li > a:focus {
     color           : white;
     text-decoration : none;
     background-color: #337ab7;
+}
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: #337ab7;
+    }
+}
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus,
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover {
+        color           : white;
+        background-color: #337ab7;
+    }
 }
 
 .navbar-default .navbar-brand {
