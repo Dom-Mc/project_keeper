@@ -407,3 +407,8 @@ tbody {
     background-color: #337ab7;
     color           : white;
 }
+@media (max-width: 768px) {
+    table .fa {
+        display: none;
+    }
+}
