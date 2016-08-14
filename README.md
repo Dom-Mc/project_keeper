@@ -32,6 +32,7 @@ $ gem install shotgun
 * Select either **_Clone with HTTPS_** or **_Clone with SSH_** and copy the clone the url.
 
 **HTTPS:** `https://github.com/YOUR-USERNAME/project_keeper.git`
+
 **SSH:** `git@github.com:YOUR-USERNAME/project_keeper.git`
 * Open your terminal and paste in the url (don't forget to change *"YOUR-USERNAME"* to your github account).
 
