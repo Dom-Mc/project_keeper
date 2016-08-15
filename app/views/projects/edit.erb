@@ -18,14 +18,14 @@
         <div class="row">
           <div class="form-group<%= ' has-error' if @user.errors[:deadline].any? %> col-sm-6">
             <label for="project_deadline">Deadline:</label>
-            <input type="date" id="project_deadline" class="form-control" name="project[deadline]" placeholder=" Day-Month-Year" value="<%= @project.deadline %>">
+            <input type="date" id="project_deadline" class="form-control" name="project[deadline]" placeholder="Year-Month-Day" value="<%= @project.deadline %>">
           </div><!-- /.form-group -->
         </div><!-- /.row -->
 
         <div class="row">
           <div class="form-group<%= ' has-error' if @user.errors[:date_started].any? %> col-sm-6">
             <label for="project_date_started">Started Date:</label>
-            <input type="date" id="project_date_started" class="form-control" name="project[date_started]" placeholder=" Day-Month-Year" value="<%= @project.date_started %>">
+            <input type="date" id="project_date_started" class="form-control" name="project[date_started]" placeholder="Year-Month-Day" value="<%= @project.date_started %>">
           </div><!-- /.form-group -->
         </div><!-- /.row -->
 
@@ -43,7 +43,7 @@
         <div class="row">
           <div class="form-group<%= ' has-error' if @user.errors[:date_completed].any? %> col-sm-6">
             <label for="project_date_completed">Date Completed:</label>
-            <input type="date" id="project_date_completed" class="form-control" name="project[date_completed]" value="<%= @project.date_completed %>">
+            <input type="date" id="project_date_completed" class="form-control" name="project[date_completed]" placeholder="Year-Month-Day" value="<%= @project.date_completed %>">
           </div><!-- /.form-group -->
         </div><!-- /.row -->
 
