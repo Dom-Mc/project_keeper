@@ -58,8 +58,8 @@ class ApplicationController < Sinatra::Base
         @slug ||= @project.slug
         @project
       else
-        flash[:danger] = "Ooops looks like an error occurred."
-        redirect "/#{@current_user.username}/projects" # TODO: change to @current_user.username
+        flash[:danger] = "Ooops looks like an error has occurred."
+        redirect "/#{@current_user.username}"
       end
     end
 
