@@ -30,7 +30,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome back to Project Keeper!"
       redirect "/#{@user.username}"
     else
-      flash[:danger] = "Invalid email/password combination."
+      flash[:danger] = "Invalid username and/or password."
       erb :'users/login'
     end
   end
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     if logged_in?
       session.clear
       @current_user = nil
-      flash[:success] = "You've successfully logged out. Hope to see you back soon!"
+      flash[:success] = "You have successfully logged out. We hope to see you back soon!"
     end
     redirect '/'
   end
@@ -58,7 +58,7 @@ class UsersController < ApplicationController
   patch '/:username' do
     user_authenticated?
     if @user.update(params[:user])
-      flash[:success] = "You've successfully edited your profile."
+      flash[:success] = "Your profile has successfully been updated!"
       redirect "/#{@user.username}"
     else
       erb :'users/edit'
@@ -68,7 +68,7 @@ class UsersController < ApplicationController
   delete '/:username/delete' do
     user_authenticated?
     @user.delete
-    flash[:success] = "You've successfully deleted your account. We're sorry to see you leave but you're always welcome back!"
+    flash[:success] = "You have successfully deleted your account. We're sorry to see you leave but you're always welcome back!"
     redirect to '/'
   end
 
