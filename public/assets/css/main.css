@@ -204,15 +204,28 @@ table .fa {
 /* -----------------------------------------
     Modal
 ----------------------------------------- */
+.modal-title {
+    font-size : 3.5rem;
+    text-align: center;
+    color     : #c9302c;
+}
+
 .modal p {
     font-size : 1.4rem;
     text-align: center;
 }
 
-.modal-title {
-    font-size : 3.5rem;
-    text-align: center;
-    color     : #c9302c;
+.modal-body p:first-child {
+    font-weight: 700;
+}
+
+button.close {
+    font-size: 2rem;
+}
+
+.alert-dismissable .close,
+.alert-dismissible .close {
+    top: -.5rem;
 }
 /* -----------------------------------------
     Navigation
@@ -278,6 +291,11 @@ menu > li > a:focus {
         background-color: #337ab7;
     }
 }
+@media (min-width: 768px) {
+    .dropdown-menu li.divider:first-child {
+        display: none;
+    }
+}
 
 .navbar-default .navbar-brand {
     font-family : 'Suez One', serif;
@@ -304,19 +322,18 @@ menu > li > a:focus {
     background-color: #fff;
 }
 
-#delete-link {
+#navbar #delete-link {
     cursor: pointer;
 }
 
-#delete-link:hover {
-    /*color           : #fff;*/
+#navbar #delete-link:hover {
     background-color: #c9302c;
     border-color    : #ac2925;
 }
 
-#delete-link:.focus,
-#delete-link:active,
-#delete-link:focus {
+#navbar #delete-link:.focus,
+#navbar #delete-link:active,
+#navbar #delete-link:focus {
     background-color: #c9302c;
     border-color    : #761c19;
 }
