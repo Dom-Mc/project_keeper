@@ -9,7 +9,7 @@
       <p>Date Started: <span><%= convert_date(@project.date_started) %></span></p>
       <p>Project Status: <span><%= @project.status %></span></p>
       <% if @project.status == "Completed" %>
-        <h2>Date Completed: <span><%= convert_date(@project.date_completed) %></span></h2>
+        <p>Date Completed: <span><%= convert_date(@project.date_completed) %></span></p>
       <% end %>
       <p>Description: <span><%= @project.description %></span></p>
       <p>Notes: <span><%= @project.notes %></span></p>
