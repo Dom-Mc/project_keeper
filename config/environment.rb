@@ -7,14 +7,15 @@ ENV['SINATRA_ENV'] ||= "development"
 require 'bundler/setup'
 Bundler.require(:default, ENV['SINATRA_ENV'])
 
-configure :development do
-  set :database, 'sqlite3:db/development.sqlite3'
-end
+# configure :development do
+#   set :database, 'sqlite3:db/development.sqlite3'
+# end
+#
+# configure :production do
+#   set :database, ENV['DATABASE_URL']
+# end
 
-configure :production do
-  set :database, ENV['DATABASE_URL']
-end
-
+ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
 
 # DB = Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://database.db')
 # Setup database connection
