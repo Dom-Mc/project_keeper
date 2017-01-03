@@ -4,11 +4,11 @@ class CreateProjects < ActiveRecord::Migration
     create_table :projects do |t|
       t.string :name, null: false
       t.text :description
-      t.string :date_started, null: false
-      t.string :date_completed
-      t.string :deadline
+      t.date :date_started
+      t.date :date_completed
+      t.date :deadline
       t.text :notes
-      t.boolean :status, null: false, default: false
+      t.string :status, null: false, default: "In Progress"
       t.references :user
       t.timestamps
     end
