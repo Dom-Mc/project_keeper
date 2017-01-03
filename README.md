@@ -3,7 +3,7 @@
 ## Description
 Project Keeper is CRUD application, designed to help users manage various projects and/or tasks. It was built with [Sinatra](http://www.sinatrarb.com/), a ruby web application framework and leverages [Twitter Bootstrap](http://getbootstrap.com/) for styling.
 
-## Instalation
+## Installation
 
 #### (Step 1) Install the following gems on your local machine:
 ##### Bundler
@@ -27,7 +27,7 @@ $ gem install shotgun
 * [Click the **_Fork_** button on the top-right corner of the page](https://help.github.com/articles/fork-a-repo/).
 
 #### (Step 3) Clone a local copy of the repository:
-* [Cick on the **_Clone or download_** dropbox.](https://help.github.com/articles/cloning-a-repository/)
+* [Click on the **_Clone or download_** dropbox.](https://help.github.com/articles/cloning-a-repository/)
 * Select either **_Clone with HTTPS_** or **_Clone with SSH_** and copy the clone the url.
 
 **HTTPS:** `https://github.com/YOUR-USERNAME/project_keeper.git`
