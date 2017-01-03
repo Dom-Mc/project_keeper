@@ -7,13 +7,12 @@ ENV['SINATRA_ENV'] ||= "development"
 require 'bundler/setup'
 Bundler.require(:default, ENV['SINATRA_ENV'])
 
-# if development?
-#   set :database, {
-#     adapter: "sqlite3",
-#     database: "db/development.sqlite3"
-#   }
-# else
+configure :development do
+  set :database, 'sqlite3:db/development.sqlite3'
+end
+
+configure :production do
   set :database, ENV['DATABASE_URL']
-# end
+end
 
 require_all 'app'
