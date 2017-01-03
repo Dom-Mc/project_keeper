@@ -14,7 +14,7 @@ class ApplicationController < Sinatra::Base
 
   get '/' do
     @user = current_user
-    erb :home
+    erb(:home)
   end
 
   helpers do

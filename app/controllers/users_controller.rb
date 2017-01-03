@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     end
   end
 
+
   get '/login' do
     redirect "/#{current_user.username}" if logged_in?
     @user = User.new

@@ -14,9 +14,8 @@ class ProjectsController < ApplicationController
 
   post '/:username/projects' do
     user_authenticated?
-    @project = Project.new(params[:project])
+    @project = @user.projects.build(params[:project])
     if @project.save
-      @user.projects << @project
       flash[:success] = "Your new project was successfully created!"
       redirect "/#{@user.username}/projects/#{@project.slug}"
     else
