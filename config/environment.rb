@@ -15,6 +15,7 @@ configure :production do
   set :database, ENV['DATABASE_URL']
 end
 
+
 # DB = Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://database.db')
 # Setup database connection
 # ActiveRecord::Base.establish_connection(
