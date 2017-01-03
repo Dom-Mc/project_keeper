@@ -1,8 +1,7 @@
 # Project Keeper
 
 ## Description
-Project Keeper is CMS application designed to assist users in managing various projects and/or tasks. It's uses [Sinatra](http://www.sinatrarb.com/), a ruby web application framework and uses [Twitter Bootstrap](http://getbootstrap.com/) for styling.
-
+Project Keeper is CRUD application, designed to help users manage various projects and/or tasks. It was built with [Sinatra](http://www.sinatrarb.com/), a ruby web application framework and leverages [Twitter Bootstrap](http://getbootstrap.com/) for styling.
 
 ## Instalation
 
@@ -74,7 +73,7 @@ Listening on 127.0.0.1:9393, CTRL+C to stop
 
 ## Creator
 Dom McKellar
-* <http://newme.io/>
+* <http://domckellar/>
 * <https://github.com/Dom-Mc>
 
 
