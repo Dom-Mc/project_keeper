@@ -13,9 +13,10 @@ group :development do
     gem 'pry'
     gem 'shotgun'
     gem 'tux'
-    gem 'sqlite3'
+    # gem 'sqlite3'
 end
 
-group :production do
-  gem 'pg', '0.18.4'
-end
+gem 'pg'
+# group :production do
+#   gem 'pg', '0.18.4'
+# end
