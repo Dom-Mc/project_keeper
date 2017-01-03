@@ -180,6 +180,9 @@ label {
 .footer a:hover {
     text-decoration: none;
 }
+.fa-github-square {
+  margin-left: .25rem;
+}
 /* -----------------------------------------
     Icons
 ----------------------------------------- */
