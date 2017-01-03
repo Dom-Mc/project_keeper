@@ -7,7 +7,7 @@ gem 'rake'
 gem 'require_all'
 gem 'sinatra'
 gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
-# gem 'thin'
+gem 'thin'
 
 group :development do
     gem 'pry'
@@ -16,6 +16,6 @@ group :development do
     gem 'sqlite3'
 end
 
-# group :production do
-#   gem 'pg', '0.18.4'
-# end
+group :production do
+  gem 'pg', '0.18.4'
+end
