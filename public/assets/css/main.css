@@ -358,6 +358,9 @@ menu > li > a:focus {
 .form-signin p {
     margin-top: 5px;
 }
+.form-signin .btn {
+  margin-top: 1rem;
+}
 /* Show Page ------------------------*/
 .show h2 small {
     font-size  : 102%;
