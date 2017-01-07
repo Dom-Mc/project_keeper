@@ -1,7 +1,9 @@
 class ProjectsController < ApplicationController
 
   get '/:username/projects/' do
-    user_authenticated?
+    # binding.pry
+    @user = User.find_by(username: params[:username])
+    # user_authenticated?
     @projects = @user.projects
     erb :'projects/index'
   end
