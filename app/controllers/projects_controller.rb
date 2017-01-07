@@ -1,9 +1,7 @@
 class ProjectsController < ApplicationController
 
-  get '/:username/projects/' do
-    # binding.pry
-    @user = User.find_by(username: params[:username])
-    # user_authenticated?
+  get '/:username/projects/?' do
+    user_authenticated?
     @projects = @user.projects
     erb :'projects/index'
   end
@@ -52,7 +50,7 @@ class ProjectsController < ApplicationController
     user_authenticated?
     slugify(params[:slug]).delete
     flash[:success] = "Your project was successfully deleted."
-    redirect to "/#{@user.username}/projects"
+    redirect to "/#{@user.username}/projects/"
   end
 
 end
