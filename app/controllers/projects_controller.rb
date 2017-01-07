@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
 
-  get '/:username/projects/?' do
+  get '/:username/projects/' do
     user_authenticated?
     @projects = @user.projects
     erb :'projects/index'
