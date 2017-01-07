@@ -18,6 +18,8 @@ group :development do
     gem 'sqlite3'
 end
 
-group :production do
-  gem 'pg', '0.18.4'
-end
+gem 'pg', '0.18.4'
+#
+# group :production do
+#   gem 'pg', '0.18.4'
+# end
