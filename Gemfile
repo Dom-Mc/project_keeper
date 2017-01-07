@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+ruby "2.3.1"
+
 gem 'activerecord', :require => 'active_record'
 gem 'bcrypt'
 gem 'rack-flash3'
@@ -13,10 +15,9 @@ group :development do
     gem 'pry'
     gem 'shotgun'
     gem 'tux'
-    # gem 'sqlite3'
+    gem 'sqlite3'
 end
 
-gem 'pg'
-# group :production do
-#   gem 'pg', '0.18.4'
-# end
+group :production do
+  gem 'pg', '0.18.4'
+end
