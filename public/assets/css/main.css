@@ -169,12 +169,13 @@ label {
     width   : 100%;
     color   : #777;
     height  : 60px;
+    text-align: center;
 }
 
 .footer p {
-    float       : right;
+    /*float       : right;*/
     margin-top  : 1rem;
-    margin-right: 15%;
+    /*margin-right: 15%;*/
 }
 
 .footer a:hover {
