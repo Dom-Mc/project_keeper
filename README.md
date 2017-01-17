@@ -70,12 +70,10 @@ Listening on 127.0.0.1:9393, CTRL+C to stop
 #### (Step 7) Bring up Project Keeper in your browser:
 * Go to either <http://127.0.0.1:9393/> or <http://localhost:9393/> and verify Project Keeper is up and running!
 
-
 ## Creator
-Dom McKellar
-* <http://domckellar/>
-* <https://github.com/Dom-Mc>
-
+[Dom McKellar](https://twitter.com/_dom_mc)
+* [Website | domckellar.com](http://domckellar.com/)
+* [Github | Dom-Mc](https://github.com/Dom-Mc)
 
 ## License
 Project Keeper is an open-sourced software licensed under the [MIT license](https://github.com/Dom-Mc/project_keeper/blob/master/LICENSE).
