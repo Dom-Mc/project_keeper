@@ -1,7 +1,7 @@
 # Project Keeper
 
 ## Description
-Project Keeper is CRUD application, designed to help users manage various projects and/or tasks. It was built with [Sinatra](http://www.sinatrarb.com/), a ruby web application framework and leverages [Twitter Bootstrap](http://getbootstrap.com/) for styling.
+[Project Keeper](https://dom-mckellar-projectkeeper.herokuapp.com/) is CRUD application, designed to help users manage various projects and/or tasks. It was built with [Sinatra](http://www.sinatrarb.com/), a ruby web application framework and leverages [Twitter Bootstrap](http://getbootstrap.com/) for styling.
 
 ## Installation
 
@@ -71,8 +71,9 @@ Listening on 127.0.0.1:9393, CTRL+C to stop
 * Go to either <http://127.0.0.1:9393/> or <http://localhost:9393/> and verify Project Keeper is up and running!
 
 ## Creator
-[Dom McKellar](https://twitter.com/_dom_mc)
+###### [Dominic McKellar](https://twitter.com/_dom_mc)
 * [Website | domckellar.com](http://domckellar.com/)
+* [Blog | newme.io](http://newme.io/)
 * [Github | Dom-Mc](https://github.com/Dom-Mc)
 
 ## License
